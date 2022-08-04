@@ -6,9 +6,15 @@ void main() {
   ));
 }
 
-class HodhaifaCard extends StatelessWidget {
+class HodhaifaCard extends StatefulWidget {
   const HodhaifaCard({Key? key}) : super(key: key);
 
+  @override
+  State<HodhaifaCard> createState() => _HodhaifaCardState();
+}
+
+class _HodhaifaCardState extends State<HodhaifaCard> {
+  int age = 15;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,6 +24,21 @@ class HodhaifaCard extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 0.0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          setState(() {
+            if(age < 19) {
+              age++;
+            } else {
+              age = 15;
+            }
+          });
+        },
+        backgroundColor: Colors.grey[800],
+        child: const Icon(
+          Icons.add
+        ),
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
@@ -61,7 +82,7 @@ class HodhaifaCard extends StatelessWidget {
             ),
             SizedBox(height: 10.0),
             Text(
-              '19',
+              '$age',
               style: TextStyle(
                   color: Colors.amberAccent,
                   letterSpacing: 2.0,
